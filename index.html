@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Example</title>
+    <link id="themeStylesheet" rel="stylesheet" href="style-white.css">
+</head>
+<body>
+    <div class="card">
+        <h1 id="titre-mot">Memories English Test</h1>
+        <p id="explication">Besoin de memoriser les mots d'englais ?
+        <br>je vous donne un mot en francais et ecris le en anglais.
+        <br>bon chance, attention c'est sensible a la casse oublier pas les espaces !
+        </p>
+        <p id="disclamer">( Spécialement concue pour le test de 25 mots )</p>
+        <button id="start">Start</button>
+        <input type="text" id="champSaisi" placeholder="Enter your text here...">
+        <button id="valider">Submit</button>
+        <div id="score">Score Streak : <span id="ScorePoints">0</span>/<span id="ScoreMax">0</span></div>
+    </div>
+    <label class="switch">
+        <input type="checkbox" id="switchTheme" title="Switch Theme">
+        <span class="slider round"></span>
+    </label>
+    <script src="script.js" defer></script>
+</body>
+</html>
