@@ -1,7 +1,7 @@
 console.log(`%cMemories English Test - Copyright (C) 2024 SALVADORI Theo`, 'color: red; font-weight: bold; text-shadow: 0 0 5px black; font-size: 20px;');
 
+let InGameInfinity = false;
 let InGame = false;
-
 let mots = [
     { "francais": "Logiciel", "anglais": "Software" },
     { "francais": "Cahier des charges", "anglais": "Specifications" },
@@ -16,7 +16,7 @@ let mots = [
     { "francais": "Identifiant", "anglais": "Username" },
     { "francais": "Bibliothèque", "anglais": "Library" },
     { "francais": "Cadre de travail", "anglais": "Framework" },
-    { "francais": "Environnement de développement", "anglais": "Integrated development environment - IDE" },
+    { "francais": "Environnement de développement", "anglais": "Integrated development environment" },
     { "francais": "Maintenance", "anglais": "Maintenance" },
     { "francais": "Sauvegarde", "anglais": "Backup" },
     { "francais": "Base de données", "anglais": "Database" },
@@ -25,42 +25,56 @@ let mots = [
     { "francais": "Pare-feu", "anglais": "Firewall" },
     { "francais": "Logiciel espion", "anglais": "Spyware" },
     { "francais": "Bande passante", "anglais": "Bandwidth" },
-    { "francais": "Interface de programmation", "anglais": "Application Programming Interface" },
+    { "francais": "Interface de programmation (api)", "anglais": "Application Programming Interface" },
     { "francais": "Balise", "anglais": "Markup" },
     { "francais": "Langage binaire", "anglais": "Binary language" }
 ];
 
-let max = mots.length;
+let motsPasser = [];
 let motActuel = '';
 let score = 0;
-let manches = 0;
-let manchesMax = mots.length;
-let dernierMot = '';
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * max);
 }
 
 function updateScore() {
-    document.getElementById("ScorePoints").innerHTML = score;
-    document.getElementById("ScoreMax").innerHTML = manches;
 
-    do {
-        motActuel = mots[getRandomInt(max)];
-    } while (motActuel.francais === dernierMot);
+    if (InGameInfinity) {
+        document.getElementById("ScorePoints").innerHTML = score;
+        document.getElementById("ScoreMax").innerHTML = "∞";
+        document.getElementById("motsRestant").innerHTML = "∞";
+    } else 
+    {
+        document.getElementById("ScorePoints").innerHTML = score;
+    document.getElementById("ScoreMax").innerHTML = mots.length;
+    document.getElementById("motsRestant").innerHTML = mots.length - motsPasser.length;
+    }
 
-    dernierMot = motActuel.francais;
-    document.getElementById("titre-mot").innerHTML = motActuel.francais;
+    if (InGameInfinity) {
+        motActuel = mots[getRandomInt(mots.length)];
+    } else {
+        do {
+            motActuel = mots[getRandomInt(mots.length)];
+        } while (motsPasser.includes(motActuel));
+        motsPasser.push(motActuel);
+    }
+
+    document.getElementById("titre-mot").innerHTML = motActuel.francais; // Changer le titre avec le mot actuel
 }
 
 document.getElementById("start").addEventListener("click", function() {
-    InGame = true;
+    InGameInfinity = true;
     this.style.display = "none";
     document.getElementById("explication").style.display = "none";
     document.getElementById("disclamer").style.display = "none";
     document.getElementById("champSaisi").style.display = "block";
     document.getElementById("valider").style.display = "block";
     document.getElementById("score").style.display = "block";
+    document.getElementById("motRestant").style.display = "block";
+
+    motsPasser = [];
+    score = 0;
     updateScore();
 });
 
@@ -75,21 +89,28 @@ document.getElementById("champSaisi").addEventListener("keypress", function(even
 });
 
 function validateInput() {
-    if (InGame) {
-        let userInput = document.getElementById("champSaisi").value.toLowerCase();
-        let correctAnswer = motActuel.anglais.toLowerCase();
-        
-        if (userInput === correctAnswer) {
-            score++;
-            console.log("Correct! Score: " + score);
-        } else {
-            console.log("Incorrect. The correct answer was: " + correctAnswer);
-        }
-        
-        manches++;
-        updateScore();
-        document.getElementById("champSaisi").value = '';
+    let userInput = document.getElementById("champSaisi").value.toLowerCase();
+    let correctAnswer = motActuel.anglais.toLowerCase();
+
+    if (userInput === correctAnswer) {
+        score++;
+        document.getElementById("champSaisi").style.backgroundColor = "green";
+    } else {
+        document.getElementById("champSaisi").style.backgroundColor = "red";
     }
+
+    document.getElementById("champSaisi").value = '';
+    updateScore();
+
+    if (!InGameInfinity && motsPasser.length >= mots.length) {
+        endGame();
+    }
+}
+
+function endGame() {
+    InGame = false;
+    document.getElementById("valider").disabled = true;
+    alert(`Fin du jeu ! Votre score final est : ${score}`);
 }
 
 document.getElementById('switchTheme').onclick = function() {
