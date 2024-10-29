@@ -33,6 +33,9 @@ let mots = [
 let motsPasser = [];
 let motActuel = '';
 let score = 0;
+let manches = 0;
+let normal = true;
+let infini = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -42,13 +45,13 @@ function updateScore() {
 
     if (InGameInfinity) {
         document.getElementById("ScorePoints").innerHTML = score;
-        document.getElementById("ScoreMax").innerHTML = "∞";
+        document.getElementById("ScoreMax").innerHTML = manches;
         document.getElementById("motsRestant").innerHTML = "∞";
     } else 
     {
         document.getElementById("ScorePoints").innerHTML = score;
-    document.getElementById("ScoreMax").innerHTML = mots.length;
-    document.getElementById("motsRestant").innerHTML = mots.length - motsPasser.length;
+        document.getElementById("ScoreMax").innerHTML = mots.length;
+        document.getElementById("motsRestant").innerHTML = mots.length - motsPasser.length;
     }
 
     if (InGameInfinity) {
@@ -60,14 +63,20 @@ function updateScore() {
         motsPasser.push(motActuel);
     }
 
-    document.getElementById("titre-mot").innerHTML = motActuel.francais; // Changer le titre avec le mot actuel
+    document.getElementById("titre-mot").innerHTML = motActuel.francais;
 }
 
 document.getElementById("start").addEventListener("click", function() {
-    InGameInfinity = true;
+    if (normal) {
+        InGame = true;
+    } else {
+        InGameInfinity = true;
+    }
     this.style.display = "none";
     document.getElementById("explication").style.display = "none";
     document.getElementById("disclamer").style.display = "none";
+    document.getElementById("mode-div").style.display = "none";
+    document.getElementById("switchMode").style.display = "none";
     document.getElementById("champSaisi").style.display = "block";
     document.getElementById("valider").style.display = "block";
     document.getElementById("score").style.display = "block";
@@ -95,8 +104,14 @@ function validateInput() {
     if (userInput === correctAnswer) {
         score++;
         document.getElementById("champSaisi").style.backgroundColor = "green";
+        if (InGameInfinity) {
+            manches++;
+        }
     } else {
         document.getElementById("champSaisi").style.backgroundColor = "red";
+        if (InGameInfinity) {
+            manches++;
+        }
     }
 
     document.getElementById("champSaisi").value = '';
@@ -119,5 +134,17 @@ document.getElementById('switchTheme').onclick = function() {
         themeStylesheet.setAttribute('href', 'style-dark.css');
     } else {
         themeStylesheet.setAttribute('href', 'style-white.css');
+    }
+};
+
+document.getElementById('switchMode').onclick = function() {
+    if (normal) {
+        normal = false;
+        infini = true;
+        document.getElementById('modeText').innerHTML = "Infini";
+    } else if (infini) {
+        normal = true;
+        infini = false;
+        document.getElementById('modeText').innerHTML = "Normal";
     }
 };

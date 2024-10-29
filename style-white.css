@@ -63,6 +63,12 @@ body {
     font-weight: bold;
 }
 
+#mode-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .switch {
     position: absolute;
     bottom: 20px;
@@ -70,6 +76,20 @@ body {
     display: inline-block;
     width: 60px;
     height: 34px;
+}
+
+.switchMode {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 10px;
+}
+
+.switchMode input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .switch input {
