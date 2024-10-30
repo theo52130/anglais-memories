@@ -1,150 +1,139 @@
-console.log(`%cMemories English Test - Copyright (C) 2024 SALVADORI Theo`, 'color: red; font-weight: bold; text-shadow: 0 0 5px black; font-size: 20px;');
+// console.log(`%cMemories English Test - Copyright (C) 2024 SALVADORI Theo`, 'color: red; font-weight: bold; text-shadow: 0 0 5px black; font-size: 20px;');
 
-let InGameInfinity = false;
-let InGame = false;
-let mots = [
-    { "francais": "Logiciel", "anglais": "Software" },
-    { "francais": "Cahier des charges", "anglais": "Specifications" },
-    { "francais": "Navigateur", "anglais": "Browser" },
-    { "francais": "Moteur de recherche", "anglais": "Search engine" },
-    { "francais": "Programmation", "anglais": "Programming" },
-    { "francais": "Nom de domaine", "anglais": "Domain name" },
-    { "francais": "Compte", "anglais": "Account" },
-    { "francais": "Créer un compte", "anglais": "To sign up" },
-    { "francais": "Définir un mot de passe", "anglais": "To set a password" },
-    { "francais": "Utilisateur", "anglais": "User" },
-    { "francais": "Identifiant", "anglais": "Username" },
-    { "francais": "Bibliothèque", "anglais": "Library" },
-    { "francais": "Cadre de travail", "anglais": "Framework" },
-    { "francais": "Environnement de développement", "anglais": "Integrated development environment" },
-    { "francais": "Maintenance", "anglais": "Maintenance" },
-    { "francais": "Sauvegarde", "anglais": "Backup" },
-    { "francais": "Base de données", "anglais": "Database" },
-    { "francais": "Flux de données", "anglais": "Data flow" },
-    { "francais": "Stockage de données", "anglais": "Data storage" },
-    { "francais": "Pare-feu", "anglais": "Firewall" },
-    { "francais": "Logiciel espion", "anglais": "Spyware" },
-    { "francais": "Bande passante", "anglais": "Bandwidth" },
-    { "francais": "Interface de programmation (api)", "anglais": "Application Programming Interface" },
-    { "francais": "Balise", "anglais": "Markup" },
-    { "francais": "Langage binaire", "anglais": "Binary language" }
-];
+// let InGameInfinity = false;
+// let InGame = false;
+// let mots = [];
 
-let motsPasser = [];
-let motActuel = '';
-let score = 0;
-let manches = 0;
-let normal = true;
-let infini = false;
+// fetch('data50.json')
+//     .then(response => response.json())
+//     .then(data => {
+//         mots = data;
+//         console.log("Liste de mots chargée avec succès :", mots);
+//         updateScore();
+//     })
+//     .catch(error => console.error("Erreur lors du chargement du fichier JSON :", error));
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+// let motsPasser = [];
+// let motActuel = '';
+// let score = 0;
+// let manches = 0;
+// let normal = true;
+// let infini = false;
 
-function updateScore() {
+// function getRandomInt(max) {
+//     return Math.floor(Math.random() * max);
+// }
 
-    if (InGameInfinity) {
-        document.getElementById("ScorePoints").innerHTML = score;
-        document.getElementById("ScoreMax").innerHTML = manches;
-        document.getElementById("motsRestant").innerHTML = "∞";
-    } else 
-    {
-        document.getElementById("ScorePoints").innerHTML = score;
-        document.getElementById("ScoreMax").innerHTML = mots.length;
-        document.getElementById("motsRestant").innerHTML = mots.length - motsPasser.length;
-    }
+// function updateScore() {
 
-    if (InGameInfinity) {
-        motActuel = mots[getRandomInt(mots.length)];
-    } else {
-        do {
-            motActuel = mots[getRandomInt(mots.length)];
-        } while (motsPasser.includes(motActuel));
-        motsPasser.push(motActuel);
-    }
+//     if (InGameInfinity) {
+//         document.getElementById("ScorePoints").innerHTML = score;
+//         document.getElementById("ScoreMax").innerHTML = manches;
+//         document.getElementById("motsRestant").innerHTML = "∞";
+//     } else {
+//         document.getElementById("ScorePoints").innerHTML = score;
+//         document.getElementById("ScoreMax").innerHTML = mots.length;
+//         document.getElementById("motsRestant").innerHTML = mots.length - motsPasser.length;
+//     }
 
-    document.getElementById("titre-mot").innerHTML = motActuel.francais;
-}
+//     if (InGameInfinity) {
+//         motActuel = mots[getRandomInt(mots.length)];
+//     } else {
+//         do {
+//             motActuel = mots[getRandomInt(mots.length)];
+//         } while (motsPasser.includes(motActuel));
+//         motsPasser.push(motActuel);
+//     }
+// }
 
-document.getElementById("start").addEventListener("click", function() {
-    if (normal) {
-        InGame = true;
-    } else {
-        InGameInfinity = true;
-    }
-    this.style.display = "none";
-    document.getElementById("explication").style.display = "none";
-    document.getElementById("disclamer").style.display = "none";
-    document.getElementById("mode-div").style.display = "none";
-    document.getElementById("switchMode").style.display = "none";
-    document.getElementById("champSaisi").style.display = "block";
-    document.getElementById("valider").style.display = "block";
-    document.getElementById("score").style.display = "block";
-    document.getElementById("motRestant").style.display = "block";
+// function initializeMotActuel() {
+//     if (mots.length > 0) {
+//         motActuel = mots[getRandomInt(mots.length)];
+//         document.getElementById("titre-mot").innerHTML = motActuel.francais;
+//     }
+// }
 
-    motsPasser = [];
-    score = 0;
-    updateScore();
-});
+// document.getElementById("start").addEventListener("click", function () {
+//     if (normal) {
+//         InGame = true;
+//     } else {
+//         InGameInfinity = true;
+//     }
+//     this.style.display = "none";
+//     document.getElementById("explication").style.display = "none";
+//     document.getElementById("disclamer").style.display = "none";
+//     document.getElementById("mode-div").style.display = "none";
+//     document.getElementById("switchMode").style.display = "none";
+//     document.getElementById("champSaisi").style.display = "block";
+//     document.getElementById("valider").style.display = "block";
+//     document.getElementById("score").style.display = "block";
+//     document.getElementById("motRestant").style.display = "block";
 
-document.getElementById("valider").addEventListener("click", function() {
-    validateInput();
-});
+//     initializeMotActuel();
 
-document.getElementById("champSaisi").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        validateInput();
-    }
-});
+//     motsPasser = [];
+//     score = 0;
+//     updateScore();
+// });
 
-function validateInput() {
-    let userInput = document.getElementById("champSaisi").value.toLowerCase();
-    let correctAnswer = motActuel.anglais.toLowerCase();
+// document.getElementById("valider").addEventListener("click", function () {
+//     validateInput();
+// });
 
-    if (userInput === correctAnswer) {
-        score++;
-        document.getElementById("champSaisi").style.backgroundColor = "green";
-        if (InGameInfinity) {
-            manches++;
-        }
-    } else {
-        document.getElementById("champSaisi").style.backgroundColor = "red";
-        if (InGameInfinity) {
-            manches++;
-        }
-    }
+// document.getElementById("champSaisi").addEventListener("keypress", function (event) {
+//     if (event.key === "Enter") {
+//         validateInput();
+//     }
+// });
 
-    document.getElementById("champSaisi").value = '';
-    updateScore();
+// function validateInput() {
+//     let userInput = document.getElementById("champSaisi").value.toLowerCase();
+//     let correctAnswer = motActuel.anglais.toLowerCase();
 
-    if (!InGameInfinity && motsPasser.length >= mots.length) {
-        endGame();
-    }
-}
+//     if (userInput === correctAnswer) {
+//         score++;
+//         document.getElementById("champSaisi").style.backgroundColor = "green";
+//         if (InGameInfinity) {
+//             manches++;
+//         }
+//     } else {
+//         document.getElementById("champSaisi").style.backgroundColor = "red";
+//         if (InGameInfinity) {
+//             manches++;
+//         }
+//     }
 
-function endGame() {
-    InGame = false;
-    document.getElementById("valider").disabled = true;
-    alert(`Fin du jeu ! Votre score final est : ${score}`);
-}
+//     document.getElementById("champSaisi").value = '';
+//     updateScore();
 
-document.getElementById('switchTheme').onclick = function() {
-    let themeStylesheet = document.getElementById('themeStylesheet');
-    if (themeStylesheet.getAttribute('href') === 'style-white.css') {
-        themeStylesheet.setAttribute('href', 'style-dark.css');
-    } else {
-        themeStylesheet.setAttribute('href', 'style-white.css');
-    }
-};
+//     if (!InGameInfinity && motsPasser.length >= mots.length) {
+//         endGame();
+//     }
+// }
 
-document.getElementById('switchMode').onclick = function() {
-    if (normal) {
-        normal = false;
-        infini = true;
-        document.getElementById('modeText').innerHTML = "Infini";
-    } else if (infini) {
-        normal = true;
-        infini = false;
-        document.getElementById('modeText').innerHTML = "Normal";
-    }
-};
+// function endGame() {
+//     InGame = false;
+//     document.getElementById("valider").disabled = true;
+//     alert(`Fin du jeu ! Votre score final est : ${score}`);
+// }
+
+// document.getElementById('switchTheme').onclick = function () {
+//     let themeStylesheet = document.getElementById('themeStylesheet');
+//     if (themeStylesheet.getAttribute('href') === 'style-white.css') {
+//         themeStylesheet.setAttribute('href', 'style-dark.css');
+//     } else {
+//         themeStylesheet.setAttribute('href', 'style-white.css');
+//     }
+// };
+
+// document.getElementById('switchMode').onclick = function () {
+//     if (normal) {
+//         normal = false;
+//         infini = true;
+//         document.getElementById('modeText').innerHTML = "Infini";
+//     } else if (infini) {
+//         normal = true;
+//         infini = false;
+//         document.getElementById('modeText').innerHTML = "Normal";
+//     }
+// };

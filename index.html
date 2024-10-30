@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memories English Test</title>
-    <link id="themeStylesheet" rel="stylesheet" href="style-white.css">
+    <link id="themeStylesheet" rel="stylesheet" href="./styles/style-white.css">
 </head>
 <body>
     <div class="card">
@@ -13,7 +13,22 @@
         <br>Je vous donne un mot en français et écris-le en anglais.
         <br>Bonne chance, attention c'est sensible à la casse, n'oubliez pas les espaces !
         </p>
-        <p id="disclamer">( Spécialement conçu pour le test de 25 mots )</p>
+        <div id="radio-mode">
+            <div class="radio-layer">
+                <input type="radio" id="radio1" name="gameMode" value="premier" checked>
+                <label for="radio1">25 premier mots</label>
+            </div>
+    
+            <div class="radio-layer">
+                <input type="radio" id="radio2" name="gameMode" value="deuxieme">
+                <label for="radio2">25 mots suivant</label>
+            </div>
+    
+            <div class="radio-layer">
+                <input type="radio" id="radio3" name="gameMode" value="troisieme">
+                <label for="radio3">50 mots</label>
+            </div>
+        </div>
         <div id="mode-div">
             <label class="switchMode">
                 <input type="checkbox" id="switchMode" title="Switch Mode">
@@ -33,6 +48,7 @@
         <input type="checkbox" id="switchTheme" title="Switch Theme">
         <span class="slider round"></span>
     </label>
-    <script src="script.js" defer></script>
+
+    <script src="./scripts/script25-1.js" defer></script>
 </body>
 </html>

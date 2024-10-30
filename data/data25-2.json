@@ -1,0 +1,102 @@
+[
+    {
+        "francais": "Système de gestion de contenu",
+        "anglais": "Content management system"
+    },
+    {
+        "francais": "Serveur",
+        "anglais": "Server / Host"
+    },
+    {
+        "francais": "Service d’hébergement",
+        "anglais": "Hosting service"
+    },
+    {
+        "francais": "Plan de site / Arborescence",
+        "anglais": "Sitemap"
+    },
+    {
+        "francais": "Site statique",
+        "anglais": "Static site"
+    },
+    {
+        "francais": "Site dynamique",
+        "anglais": "Dynamic site"
+    },
+    {
+        "francais": "Site animé",
+        "anglais": "Animated site"
+    },
+    {
+        "francais": "Refonte",
+        "anglais": "Redesign"
+    },
+    {
+        "francais": "Charte graphique",
+        "anglais": "Graphic charter"
+    },
+    {
+        "francais": "Bannière",
+        "anglais": "Banner"
+    },
+    {
+        "francais": "Référencement",
+        "anglais": "Referencing"
+    },
+    {
+        "francais": "Optimisation pour les moteurs de recherche",
+        "anglais": "Search Engine Optimization"
+    },
+    {
+        "francais": "Référencement payant",
+        "anglais": "Search Engine Advertising"
+    },
+    {
+        "francais": "Référencement abusif",
+        "anglais": "Spamdexing"
+    },
+    {
+        "francais": "Réseau Social",
+        "anglais": "Social Network"
+    },
+    {
+        "francais": "Protocole de transfert de fichier",
+        "anglais": "File Transfer Protocol"
+    },
+    {
+        "francais": "Transfert de fichier",
+        "anglais": "File transfer"
+    },
+    {
+        "francais": "Partage de fichier",
+        "anglais": "File sharing"
+    },
+    {
+        "francais": "Télécharger",
+        "anglais": "To download/To upload"
+    },
+    {
+        "francais": "Visite virtuelle",
+        "anglais": "Virtual visit"
+    },
+    {
+        "francais": "Objet interactif",
+        "anglais": "Interactive object"
+    },
+    {
+        "francais": "Interface utilisateur graphique",
+        "anglais": "Graphic user interface"
+    },
+    {
+        "francais": "Prototype d’interface utilisateur",
+        "anglais": "Mock-up"
+    },
+    {
+        "francais": "Expérience utilisateur",
+        "anglais": "User experience"
+    },
+    {
+        "francais": "Maquette fonctionnelle d’un site",
+        "anglais": "Wireframe"
+    }
+]

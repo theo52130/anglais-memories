@@ -18,8 +18,8 @@ body {
     flex-direction: column;
     text-align: center;
     justify-content: space-between;
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    min-height: 400px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -128,4 +128,28 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
+}
+
+#radio-mode {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+#radio-mode label {
+    margin: 0 10px;
+}
+
+#radio-mode input[type="radio"] {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.radio-layer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
 }
