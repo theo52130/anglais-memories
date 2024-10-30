@@ -1,27 +1,102 @@
 [
-    { "francais": "Logiciel", "anglais": "Software" },
-    { "francais": "Cahier des charges", "anglais": "Specifications" },
-    { "francais": "Navigateur", "anglais": "Browser" },
-    { "francais": "Moteur de recherche", "anglais": "Search engine" },
-    { "francais": "Programmation", "anglais": "Programming" },
-    { "francais": "Nom de domaine", "anglais": "Domain name" },
-    { "francais": "Compte", "anglais": "Account" },
-    { "francais": "Créer un compte", "anglais": "To sign up" },
-    { "francais": "Définir un mot de passe", "anglais": "To set a password" },
-    { "francais": "Utilisateur", "anglais": "User" },
-    { "francais": "Identifiant", "anglais": "Username" },
-    { "francais": "Bibliothèque", "anglais": "Library" },
-    { "francais": "Cadre de travail", "anglais": "Framework" },
-    { "francais": "Environnement de développement", "anglais": "Integrated development environment" },
-    { "francais": "Maintenance", "anglais": "Maintenance" },
-    { "francais": "Sauvegarde", "anglais": "Backup" },
-    { "francais": "Base de données", "anglais": "Database" },
-    { "francais": "Flux de données", "anglais": "Data flow" },
-    { "francais": "Stockage de données", "anglais": "Data storage" },
-    { "francais": "Pare-feu", "anglais": "Firewall" },
-    { "francais": "Logiciel espion", "anglais": "Spyware" },
-    { "francais": "Bande passante", "anglais": "Bandwidth" },
-    { "francais": "Interface de programmation (api)", "anglais": "Application Programming Interface" },
-    { "francais": "Balise", "anglais": "Markup" },
-    { "francais": "Langage binaire", "anglais": "Binary language" }
+  {
+    "francais": "Logiciel",
+    "anglais": "Software"
+  },
+  {
+    "francais": "Cahier des charges",
+    "anglais": "Specifications"
+  },
+  {
+    "francais": "Navigateur",
+    "anglais": "Browser"
+  },
+  {
+    "francais": "Moteur de recherche",
+    "anglais": "Search engine"
+  },
+  {
+    "francais": "Programmation",
+    "anglais": "Programming"
+  },
+  {
+    "francais": "Nom de domaine",
+    "anglais": "Domain name"
+  },
+  {
+    "francais": "Compte",
+    "anglais": "Account"
+  },
+  {
+    "francais": "Créer un compte",
+    "anglais": "To sign up"
+  },
+  {
+    "francais": "Définir un mot de passe",
+    "anglais": "To set a password"
+  },
+  {
+    "francais": "Utilisateur",
+    "anglais": "User"
+  },
+  {
+    "francais": "Identifiant",
+    "anglais": "Username"
+  },
+  {
+    "francais": "Bibliothèque",
+    "anglais": "Library"
+  },
+  {
+    "francais": "Cadre de travail",
+    "anglais": "Framework"
+  },
+  {
+    "francais": "Environnement de développement",
+    "anglais": "Integrated development environment"
+  },
+  {
+    "francais": "Maintenance",
+    "anglais": "Maintenance"
+  },
+  {
+    "francais": "Sauvegarde",
+    "anglais": "Backup"
+  },
+  {
+    "francais": "Base de données",
+    "anglais": "Database"
+  },
+  {
+    "francais": "Flux de données",
+    "anglais": "Data flow"
+  },
+  {
+    "francais": "Stockage de données",
+    "anglais": "Data storage"
+  },
+  {
+    "francais": "Pare-feu",
+    "anglais": "Firewall"
+  },
+  {
+    "francais": "Logiciel espion",
+    "anglais": "Spyware"
+  },
+  {
+    "francais": "Bande passante",
+    "anglais": "Bandwidth"
+  },
+  {
+    "francais": "Interface de programmation (api)",
+    "anglais": "Application Programming Interface"
+  },
+  {
+    "francais": "Balise",
+    "anglais": "Markup"
+  },
+  {
+    "francais": "Langage binaire",
+    "anglais": "Binary language"
+  }
 ]

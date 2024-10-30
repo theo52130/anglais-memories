@@ -10,7 +10,7 @@
     <div class="card">
         <h1 id="titre-mot">Memories English Test</h1>
         <p id="explication">Besoin de mémoriser les mots d'anglais ?
-        <br>Je vous donne un mot en français et écris-le en anglais.
+        <br>Je vous donne un mot et écris-le traduit.
         <br>Bonne chance, attention c'est sensible à la casse, n'oubliez pas les espaces !
         </p>
         <div id="radio-mode">
@@ -36,9 +36,16 @@
             </label>
             <p id="mode">Mode : <span id="modeText">Normal</span></p>
         </div>
+        <div id="language-div">
+            <label for="languageSelect">Langue affiché : </label>
+            <select id="languageSelect">
+                <option value="francais">Français</option>
+                <option value="anglais">Anglais</option>
+            </select>
+        </div>        
         <button id="start">Start</button>
         <input type="text" id="champSaisi" placeholder="Entrez votre texte ici..." style="display:none;">
-        <button id="valider" style="display:none;">Submit</button>
+        <button id="valider" style="display:none;">Valider</button>
         <div id="score" style="display:none;">
             Score Streak : <span id="ScorePoints">0</span> / <span id="ScoreMax">0</span>
         </div>

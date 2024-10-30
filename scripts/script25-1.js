@@ -1,108 +1,78 @@
 console.log("%cMemories English Test - Copyright (C) 2024 SALVADORI Theo", 'color: red; font-weight: bold; text-shadow: 0 0 5px black; font-size: 20px;');
-var InGameInfinity = false;
-var InGame = false;
-var mots = [];
 
-var motsPasser = [];
-var motActuel = null;
-var score = 0;
-var manches = 0;
-var normal = true;
-var infini = false;
+let InGameInfinity = false;
+let InGame = false;
+let mots = [];
+let motsPasser = [];
+let motActuel = null;
+let score = 0;
+let manches = 0;
+let normal = true;
+let infini = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
 function updateScore() {
-    var scorePointsElement = document.getElementById("ScorePoints");
-    var scoreMaxElement = document.getElementById("ScoreMax");
-    var motsRestantElement = document.getElementById("motsRestant");
+    let scorePointsElement = document.getElementById("ScorePoints");
+    let scoreMaxElement = document.getElementById("ScoreMax");
+    let motsRestantElement = document.getElementById("motsRestant");
+    let languageSelect = document.getElementById("languageSelect").value;
+
     scorePointsElement.innerHTML = score.toString();
     scoreMaxElement.innerHTML = InGameInfinity ? manches.toString() : mots.length.toString();
     motsRestantElement.innerHTML = InGameInfinity ? "∞" : (mots.length - motsPasser.length).toString();
+
     if (InGame || InGameInfinity) {
-        if (InGameInfinity) {
+        do {
             motActuel = mots[getRandomInt(mots.length)];
-        } else {
-            do {
-                motActuel = mots[getRandomInt(mots.length)];
-            } while (motsPasser.some(function (mot) { return mot.francais === motActuel.francais; }));
-            motsPasser.push(motActuel);
-        }
+        } while (motsPasser.some(mot => mot.francais === motActuel.francais));
+
         if (motActuel) {
-            document.getElementById("titre-mot").innerHTML = motActuel.francais;
+            motsPasser.push(motActuel);
+            document.getElementById("titre-mot").innerHTML = languageSelect === "francais" ? motActuel.francais : motActuel.anglais;
         }
     }
 }
 
 function initializeMotActuel() {
-    if (InGame || InGameInfinity) {
-        if (mots.length > 0) {
-            do {
-                motActuel = mots[getRandomInt(mots.length)];
-            } while (motsPasser.some(function (mot) { return mot.francais === motActuel.francais; }));
-            if (motActuel) {
-                document.getElementById("titre-mot").innerHTML = motActuel.francais;
-            }
+    if ((InGame || InGameInfinity) && mots.length > 0) {
+        do {
+            motActuel = mots[getRandomInt(mots.length)];
+        } while (motsPasser.some(mot => mot.francais === motActuel.francais));
+
+        if (motActuel) {
+            let languageSelect = document.getElementById("languageSelect").value;
+            document.getElementById("titre-mot").innerHTML = languageSelect === "francais" ? motActuel.francais : motActuel.anglais;
         }
     }
     return motActuel;
 }
 
 document.getElementById("start").addEventListener("click", function () {
-    if (document.getElementById("radio1").checked) {
-        fetch('./data/data25-1.json')
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-                mots = data;
-                console.log("Liste de mots chargée avec succès :", mots);
-                initializeMotActuel();
-                updateScore();
-                if (motActuel) {
-                    document.getElementById("titre-mot").innerHTML = motActuel.francais;
-                }
-            })
-            .catch(function (error) { return console.error("Erreur lors du chargement du fichier JSON :", error); });
-    } else if (document.getElementById("radio2").checked) {
-        fetch('./data/data25-2.json')
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-                mots = data;
-                console.log("Liste de mots chargée avec succès :", mots);
-                initializeMotActuel();
-                updateScore();
-                if (motActuel) {
-                    document.getElementById("titre-mot").innerHTML = motActuel.francais;
-                }
-            })
-            .catch(function (error) { return console.error("Erreur lors du chargement du fichier JSON :", error); });
-    } else if (document.getElementById("radio3").checked) {
-        fetch('./data/data50.json')
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-                mots = data;
-                console.log("Liste de mots chargée avec succès :", mots);
-                initializeMotActuel();
-                updateScore();
-                if (motActuel) {
-                    document.getElementById("titre-mot").innerHTML = motActuel.francais;
-                }
-            })
-            .catch(function (error) { return console.error("Erreur lors du chargement du fichier JSON :", error); });
-    }
+    let dataFile = document.getElementById("radio1").checked ? './data/data25-1.json' :
+                   document.getElementById("radio2").checked ? './data/data25-2.json' : './data/data50.json';
 
-    if (normal) {
-        InGame = true;
-    }
-    else {
-        InGameInfinity = true;
-    }
+    fetch(dataFile)
+        .then(response => response.json())
+        .then(data => {
+            mots = data;
+            console.log("Liste de mots chargée avec succès :", mots);
+            initializeMotActuel();
+            updateScore();
+        })
+        .catch(error => console.error("Erreur lors du chargement du fichier JSON :", error));
+
+    InGame = normal;
+    InGameInfinity = infini;
+
     this.style.display = "none";
     document.getElementById("explication").style.display = "none";
     document.getElementById("mode-div").style.display = "none";
     document.getElementById("switchMode").style.display = "none";
     document.getElementById("radio-mode").style.display = "none";
+    document.getElementById("language-div").style.display = "none";
     document.getElementById("champSaisi").style.display = "block";
     document.getElementById("valider").style.display = "block";
     document.getElementById("score").style.display = "block";
@@ -110,44 +80,51 @@ document.getElementById("start").addEventListener("click", function () {
     motsPasser = [];
     score = 0;
 });
-document.getElementById("valider").addEventListener("click", function () {
-    validateInput();
-});
+
+document.getElementById("valider").addEventListener("click", validateInput);
 document.getElementById("champSaisi").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         validateInput();
     }
 });
+
 function validateInput() {
-    var userInput = document.getElementById("champSaisi").value.toLowerCase();
-    var correctAnswer = motActuel === null || motActuel === void 0 ? void 0 : motActuel.anglais.toLowerCase();
+    let languageSelect = document.getElementById("languageSelect").value;
+    let userInput = document.getElementById("champSaisi").value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    let correctAnswer = motActuel ? (languageSelect === "francais" ? motActuel.anglais : motActuel.francais).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+
+    console.log("User Input:", userInput);
+    console.log("Expected Answer:", correctAnswer);
+
     if (userInput === correctAnswer) {
         score++;
-        document.getElementById("champSaisi").style.backgroundColor = "green";
-        if (InGameInfinity) {
-            manches++;
-        }
+        document.getElementById("score").style.color = "green";
+    } else {
+        document.getElementById("score").style.color = "red";
     }
-    else {
-        document.getElementById("champSaisi").style.backgroundColor = "red";
-        if (InGameInfinity) {
-            manches++;
-        }
-    }
+
     document.getElementById("champSaisi").value = '';
-    updateScore();
-    if (!InGameInfinity && motsPasser.length >= mots.length) {
+
+    if (!InGameInfinity && motsPasser.length < mots.length) {
+        updateScore();
+    } else if (!InGameInfinity && motsPasser.length >= mots.length) {
         endGame();
+    } else if (InGameInfinity) {
+        manches++;
+        updateScore();
     }
 }
+
+
 function endGame() {
     InGame = false;
     InGameInfinity = false;
     document.getElementById("valider").disabled = true;
-    alert("Fin du jeu ! Votre score final est : ".concat(score));
+    alert(`Fin du jeu ! Votre score final est : ${score}`);
 }
+
 document.getElementById('switchTheme').onclick = function () {
-    var themeStylesheet = document.getElementById('themeStylesheet');
+    let themeStylesheet = document.getElementById('themeStylesheet');
     themeStylesheet.href = themeStylesheet.getAttribute('href').includes('style-white.css') ? './styles/style-dark.css' : './styles/style-white.css';
 };
 document.getElementById('switchMode').onclick = function () {
@@ -155,3 +132,9 @@ document.getElementById('switchMode').onclick = function () {
     infini = !infini;
     document.getElementById('modeText').innerHTML = infini ? "Infini" : "Normal";
 };
+
+document.getElementById("languageSelect").addEventListener("change", function () {
+    if (motActuel) {
+        document.getElementById("titre-mot").innerHTML = this.value === "francais" ? motActuel.francais : motActuel.anglais;
+    }
+});

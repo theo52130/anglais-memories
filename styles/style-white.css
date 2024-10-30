@@ -19,7 +19,7 @@ body {
     text-align: center;
     justify-content: space-between;
     width: 350px;
-    min-height: 400px;
+    min-height: 420px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -152,4 +152,15 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+}
+
+#language-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+#explication {
+    line-height: 2;
 }
